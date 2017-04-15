@@ -10,6 +10,7 @@
 		9221F7641EA2B52100077DDD /* WikiView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9221F75A1EA2B52100077DDD /* WikiView.framework */; };
 		9221F7691EA2B52100077DDD /* WikiViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F7681EA2B52100077DDD /* WikiViewTests.swift */; };
 		9221F76B1EA2B52100077DDD /* WikiView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9221F75D1EA2B52100077DDD /* WikiView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9221F7761EA2C08F00077DDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9221F7751EA2C08F00077DDD /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		9221F7631EA2B52100077DDD /* WikiViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9221F7681EA2B52100077DDD /* WikiViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewTests.swift; sourceTree = "<group>"; };
 		9221F76A1EA2B52100077DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9221F7751EA2C08F00077DDD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9221F7761EA2C08F00077DDD /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +59,7 @@
 				9221F75C1EA2B52100077DDD /* WikiView */,
 				9221F7671EA2B52100077DDD /* WikiViewTests */,
 				9221F75B1EA2B52100077DDD /* Products */,
+				9221F7741EA2C08E00077DDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +90,14 @@
 			path = WikiViewTests;
 			sourceTree = "<group>";
 		};
+		9221F7741EA2C08E00077DDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9221F7751EA2C08F00077DDD /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -108,6 +120,7 @@
 				9221F7561EA2B52100077DDD /* Frameworks */,
 				9221F7571EA2B52100077DDD /* Headers */,
 				9221F7581EA2B52100077DDD /* Resources */,
+				9221F7771EA2C09A00077DDD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -192,6 +205,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9221F7771EA2C09A00077DDD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9221F7551EA2B52100077DDD /* Sources */ = {
@@ -330,6 +360,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WikiView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -349,6 +383,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WikiView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
