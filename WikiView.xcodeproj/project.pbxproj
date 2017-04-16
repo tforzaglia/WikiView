@@ -11,6 +11,9 @@
 		9221F7691EA2B52100077DDD /* WikiViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F7681EA2B52100077DDD /* WikiViewTests.swift */; };
 		9221F76B1EA2B52100077DDD /* WikiView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9221F75D1EA2B52100077DDD /* WikiView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9221F7761EA2C08F00077DDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9221F7751EA2C08F00077DDD /* Alamofire.framework */; };
+		9221F77A1EA2C64C00077DDD /* WikipediaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F7791EA2C64C00077DDD /* WikipediaClient.swift */; };
+		9221F77D1EA2F1F200077DDD /* WikiPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F77C1EA2F1F200077DDD /* WikiPage.swift */; };
+		9221F77F1EA309E000077DDD /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9221F77E1EA309E000077DDD /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,9 @@
 		9221F7681EA2B52100077DDD /* WikiViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewTests.swift; sourceTree = "<group>"; };
 		9221F76A1EA2B52100077DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9221F7751EA2C08F00077DDD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		9221F7791EA2C64C00077DDD /* WikipediaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WikipediaClient.swift; path = Clients/WikipediaClient.swift; sourceTree = "<group>"; };
+		9221F77C1EA2F1F200077DDD /* WikiPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WikiPage.swift; path = Models/WikiPage.swift; sourceTree = "<group>"; };
+		9221F77E1EA309E000077DDD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9221F7761EA2C08F00077DDD /* Alamofire.framework in Frameworks */,
+				9221F77F1EA309E000077DDD /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +82,8 @@
 		9221F75C1EA2B52100077DDD /* WikiView */ = {
 			isa = PBXGroup;
 			children = (
+				9221F7781EA2C61900077DDD /* Clients */,
+				9221F77B1EA2F1D900077DDD /* Models */,
 				9221F75D1EA2B52100077DDD /* WikiView.h */,
 				9221F75E1EA2B52100077DDD /* Info.plist */,
 			);
@@ -93,9 +102,26 @@
 		9221F7741EA2C08E00077DDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9221F77E1EA309E000077DDD /* SwiftyJSON.framework */,
 				9221F7751EA2C08F00077DDD /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9221F7781EA2C61900077DDD /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				9221F7791EA2C64C00077DDD /* WikipediaClient.swift */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		9221F77B1EA2F1D900077DDD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9221F77C1EA2F1F200077DDD /* WikiPage.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +188,7 @@
 					9221F7591EA2B52100077DDD = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = M7A9GP774H;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					9221F7621EA2B52100077DDD = {
@@ -214,6 +241,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);
@@ -228,6 +256,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9221F77D1EA2F1F200077DDD /* WikiPage.swift in Sources */,
+				9221F77A1EA2C64C00077DDD /* WikipediaClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +384,7 @@
 		9221F76F1EA2B52100077DDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = M7A9GP774H;
@@ -370,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tforza.WikiView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -377,6 +409,7 @@
 		9221F7701EA2B52100077DDD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = M7A9GP774H;
@@ -400,6 +433,7 @@
 		9221F7721EA2B52100077DDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = M7A9GP774H;
 				INFOPLIST_FILE = WikiViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -412,6 +446,7 @@
 		9221F7731EA2B52100077DDD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = M7A9GP774H;
 				INFOPLIST_FILE = WikiViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -440,6 +475,7 @@
 				9221F7701EA2B52100077DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9221F7711EA2B52100077DDD /* Build configuration list for PBXNativeTarget "WikiViewTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +484,7 @@
 				9221F7731EA2B52100077DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
