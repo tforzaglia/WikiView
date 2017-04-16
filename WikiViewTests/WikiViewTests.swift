@@ -13,7 +13,7 @@ class WikiViewTests: XCTestCase {
     let client = WikipediaClient()
     
     func testGetWikiPageLink() {
-        let ex = expectation(description: "Get a wikipedia page link for the given search term")
+        let ex = expectation(description: "Get a wikipedia page title and extract for the given search term")
         client.searchForWikiPage(
             withTitle: "Anna Kendrick",
             onSuccess: { wikiPage in
