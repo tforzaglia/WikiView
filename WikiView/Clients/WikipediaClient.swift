@@ -17,7 +17,7 @@ internal class WikipediaClient {
     /// - parameter onError:   block to executed on unsuccessful API call
     internal func searchForWikiPage(withTitle title: String, onSuccess: @escaping (WikiPage) -> Void, onError: @escaping (Error) -> Void) {
         let urlEncodedTitle = title.replacingOccurrences(of: " ", with: "%20")
-        let url = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&titles=\(urlEncodedTitle)&format=json"
+        let url = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts%7Cpageimages&exintro&explaintext&pithumbsize=200&titles=\(urlEncodedTitle)&format=json"
         Alamofire.request(url, encoding: JSONEncoding.default, headers: httpHeaders()).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
@@ -39,8 +39,9 @@ internal class WikipediaClient {
         let pageIdDictionary = json["query"]["pages"].first?.1
         guard let title = pageIdDictionary?["title"].string else { return nil }
         guard let extract = pageIdDictionary?["extract"].string else { return nil }
+        guard let imageUrl = pageIdDictionary?["thumbnail"].dictionary?["source"]?.string else { return nil }
 
-        return WikiPage(title: title, extract: extract)
+        return WikiPage(title: title, extract: extract, imageUrl: imageUrl)
     }
 
     /// Create dictionary of headers to be used in API calls

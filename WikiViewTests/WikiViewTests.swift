@@ -19,6 +19,7 @@ class WikiViewTests: XCTestCase {
             onSuccess: { wikiPage in
                 print(wikiPage.title)
                 print(wikiPage.extract)
+                print(wikiPage.imageUrl)
 
                 ex.fulfill()
             },
