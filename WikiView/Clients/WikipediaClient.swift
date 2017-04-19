@@ -42,9 +42,10 @@ internal class WikipediaClient {
     /// - returns: `WikiPage` object containing the title and intro paragraph text
     private func wikiPageFromJson(json: JSON) -> WikiPage? {
         let pageIdDictionary = json["query"]["pages"].first?.1
-        guard let title = pageIdDictionary?["title"].string else { return nil }
-        guard let extract = pageIdDictionary?["extract"].string else { return nil }
-        guard let imageUrl = pageIdDictionary?["thumbnail"].dictionary?["source"]?.string else { return nil }
+        print("pageIdDict \(String(describing: pageIdDictionary))")
+        guard let title = pageIdDictionary?["title"].string else { print("error parsing title"); return nil }
+        guard let extract = pageIdDictionary?["extract"].string else { print("error parsing extract"); return nil }
+        guard let imageUrl = pageIdDictionary?["thumbnail"].dictionary?["source"]?.string else { print("error parsing image url"); return nil }
 
         return WikiPage(title: title, extract: extract, imageUrl: imageUrl)
     }
