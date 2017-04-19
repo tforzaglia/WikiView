@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WikiPageViewController: UIViewController {
+public class WikiPageViewController: UIViewController {
     /// The search term to use with the Wikipedia API
     private var searchTerm: String
 
