@@ -22,10 +22,15 @@ internal class WikipediaClient {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
+                print(json)
                 if let wikiPage = self?.wikiPageFromJson(json: json) {
+                    print("got wiki page from json...calling success block")
                     onSuccess(wikiPage)
+                } else {
+                    print("there was an error parsing the json")
                 }
             case .failure(let error):
+                print("calling the error block")
                 onError(error)
             }
         }
