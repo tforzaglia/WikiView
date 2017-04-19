@@ -53,6 +53,10 @@ public class WikiPageViewController: UIViewController {
         view.backgroundColor = .white
 
         searchForWikiPage()
+    }
+
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
 
         setupTitleLabel()
         setupViewSeparator()
