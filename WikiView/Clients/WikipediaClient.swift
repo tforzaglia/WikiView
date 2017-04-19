@@ -19,10 +19,11 @@ internal class WikipediaClient {
         let urlEncodedTitle = title.replacingOccurrences(of: " ", with: "%20")
         let url = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts%7Cpageimages&exintro&explaintext&pithumbsize=200&titles=\(urlEncodedTitle)&format=json"
         Alamofire.request(url, encoding: JSONEncoding.default, headers: httpHeaders()).responseJSON { [weak self] response in
+            guard let strongSelf = self else { return }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                if let wikiPage = self?.wikiPageFromJson(json: json) {
+                if let wikiPage = strongSelf.wikiPageFromJson(json: json) {
                     onSuccess(wikiPage)
                 }
             case .failure(let error):
