@@ -12,15 +12,6 @@ public class WikiPageViewController: UIViewController {
     /// The search term to use with the Wikipedia API
     private var searchTerm: String
 
-    /// The page built from the response of the API call
-    private var wikiPage: WikiPage? = nil {
-        didSet {
-            titleLabel.text = wikiPage?.title
-            thumbnailImageView.setURLImage(url: wikiPage?.imageUrl)
-            introParagraphTextView.text = wikiPage?.extract
-        }
-    }
-
     /// The title of the Wiki page
     private let titleLabel = UILabel(frame: .zero)
 
@@ -72,7 +63,12 @@ public class WikiPageViewController: UIViewController {
         wikiClient.searchForWikiPage(
             withTitle: searchTerm,
             onSuccess: { [weak self] wikiPage in
-                self?.wikiPage = wikiPage
+                guard let strongSelf = self else { return }
+                DispatchQueue.main.async {
+                    strongSelf.titleLabel.text = wikiPage.title
+                    strongSelf.thumbnailImageView.setURLImage(url: wikiPage.imageUrl)
+                    strongSelf.introParagraphTextView.text = wikiPage.extract
+                }
             }, onError: { error in
                 print(error)
             }
