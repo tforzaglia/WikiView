@@ -46,8 +46,6 @@ public class WikiPageViewController: UIViewController {
     public init(withSearchTerm searchTerm: String) {
         self.searchTerm = searchTerm
 
-        print("calling init with search term \(searchTerm))" )
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -57,8 +55,6 @@ public class WikiPageViewController: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-
-        print("in viewDidLoad")
 
         view.backgroundColor = .white
 
@@ -70,7 +66,6 @@ public class WikiPageViewController: UIViewController {
         wikiClient.searchForWikiPage(
             withTitle: searchTerm,
             onSuccess: { [weak self] wikiPage in
-                print("entering on success")
                 guard let strongSelf = self else { return }
                 DispatchQueue.main.async {
                     strongSelf.wikiPage = wikiPage
