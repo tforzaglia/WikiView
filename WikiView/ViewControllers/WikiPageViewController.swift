@@ -66,9 +66,11 @@ public class WikiPageViewController: UIViewController {
             onSuccess: { [weak self] wikiPage in
                 guard let strongSelf = self else { return }
                 DispatchQueue.main.async {
-                    strongSelf.titleLabel.text = wikiPage.title
-                    strongSelf.thumbnailImageView.setURLImage(url: wikiPage.imageUrl)
-                    strongSelf.introParagraphTextView.text = wikiPage.extract
+                    print(wikiPage.title)
+                    print(wikiPage.extract)
+                    print(wikiPage.imageUrl)
+
+                    strongSelf.wikiPage = wikiPage
                 }
             }, onError: { error in
                 print(error)
