@@ -53,6 +53,9 @@ public class WikiPageViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .white
+
+        searchForWikiPage()
     }
 
     /// Hit the Wikipedia API to get the required information
