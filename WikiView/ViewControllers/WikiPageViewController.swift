@@ -24,6 +24,10 @@ public class WikiPageViewController: UIViewController {
     /// View separator between the title and image
     private let viewSeparator = UIView(frame: .zero)
 
+    private var isPhone: Bool {
+        return traitCollection.horizontalSizeClass == .compact
+    }
+
     public init(withSearchTerm searchTerm: String) {
         self.searchTerm = searchTerm
 
@@ -40,6 +44,10 @@ public class WikiPageViewController: UIViewController {
         view.backgroundColor = .white
 
         searchForWikiPage()
+    }
+
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
 
         setupTitleLabel()
         setupViewSeparator()
@@ -69,11 +77,12 @@ public class WikiPageViewController: UIViewController {
 
     /// Setup the label containing the article's title
     private func setupTitleLabel() {
+        let fontSize: CGFloat = isPhone ? 20 : 26
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: fontSize)
 
         view.addSubview(titleLabel)
     }
@@ -95,22 +104,24 @@ public class WikiPageViewController: UIViewController {
 
     /// Setup the text view containing the article's intro paragraph
     private func setupIntroParagraphTextView() {
+        let fontSize: CGFloat = isPhone ? 12 : 14
         introParagraphTextView.translatesAutoresizingMaskIntoConstraints = false
         introParagraphTextView.textAlignment = .left
-        introParagraphTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
+        introParagraphTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: fontSize)
 
         view.addSubview(introParagraphTextView)
     }
 
     /// Activate constraints on all the controls that make up the UI
     private func applyConstraints() {
+        let width: CGFloat = isPhone ? view.bounds.width - 30 : 400
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: view.bounds.width - 30).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-        viewSeparator.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        viewSeparator.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2).isActive = true
         viewSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        viewSeparator.widthAnchor.constraint(equalToConstant: view.bounds.width - 30).isActive = true
+        viewSeparator.widthAnchor.constraint(equalToConstant: width).isActive = true
         viewSeparator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         thumbnailImageView.topAnchor.constraint(equalTo: viewSeparator.bottomAnchor, constant: 10).isActive = true
@@ -120,7 +131,7 @@ public class WikiPageViewController: UIViewController {
 
         introParagraphTextView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 15).isActive = true
         introParagraphTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        introParagraphTextView.widthAnchor.constraint(equalToConstant: view.bounds.width - 30).isActive = true
+        introParagraphTextView.widthAnchor.constraint(equalToConstant: width).isActive = true
         introParagraphTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }
