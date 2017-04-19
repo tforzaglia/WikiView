@@ -130,6 +130,7 @@ public class WikiPageViewController: UIViewController {
         thumbnailImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         introParagraphTextView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 15).isActive = true
+        introParagraphTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         introParagraphTextView.widthAnchor.constraint(equalToConstant: width).isActive = true
         introParagraphTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
