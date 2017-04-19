@@ -26,8 +26,9 @@ class UrlImageView: UIImageView {
         teardown()
     }
 
-    public func setURLImage(url: String) {
+    public func setURLImage(url: String?) {
         teardown()
+        guard let url = url else { return }
         if let uri = URL(string: url), existingURL != uri {
             let request = NSURLRequest(url: uri)
 
