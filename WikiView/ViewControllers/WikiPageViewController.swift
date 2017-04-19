@@ -24,6 +24,18 @@ public class WikiPageViewController: UIViewController {
     /// View separator between the title and image
     private let viewSeparator = UIView(frame: .zero)
 
+    /// The page built from the response of the API call
+    private var wikiPage: WikiPage? = nil {
+        didSet {
+            setupTitleLabel()
+            setupViewSeparator()
+            setupThumbnailImageView()
+            setupIntroParagraphTextView()
+
+            applyConstraints()
+        }
+    }
+
     private var isPhone: Bool {
         return traitCollection.horizontalSizeClass == .compact
     }
@@ -44,17 +56,6 @@ public class WikiPageViewController: UIViewController {
         view.backgroundColor = .white
 
         searchForWikiPage()
-    }
-
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        setupTitleLabel()
-        setupViewSeparator()
-        setupThumbnailImageView()
-        setupIntroParagraphTextView()
-
-        applyConstraints()
     }
 
     /// Hit the Wikipedia API to get the required information
@@ -83,6 +84,7 @@ public class WikiPageViewController: UIViewController {
         titleLabel.numberOfLines = 2
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: fontSize)
+        titleLabel.text = wikiPage?.title
 
         view.addSubview(titleLabel)
     }
@@ -98,6 +100,7 @@ public class WikiPageViewController: UIViewController {
     /// Setup the image view containing the article's main thumbnail
     private func setupThumbnailImageView() {
         thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
+        thumbnailImageView.setURLImage(url: wikiPage?.imageUrl)
 
         view.addSubview(thumbnailImageView)
     }
@@ -106,8 +109,10 @@ public class WikiPageViewController: UIViewController {
     private func setupIntroParagraphTextView() {
         let fontSize: CGFloat = isPhone ? 12 : 14
         introParagraphTextView.translatesAutoresizingMaskIntoConstraints = false
+        introParagraphTextView.isEditable = false
         introParagraphTextView.textAlignment = .left
         introParagraphTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: fontSize)
+        introParagraphTextView.text = wikiPage?.extract
 
         view.addSubview(introParagraphTextView)
     }
