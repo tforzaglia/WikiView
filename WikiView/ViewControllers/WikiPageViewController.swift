@@ -40,7 +40,7 @@ public class WikiPageViewController: UIViewController {
         return traitCollection.horizontalSizeClass == .compact
     }
 
-    init(withSearchTerm searchTerm: String) {
+    public init(withSearchTerm searchTerm: String) {
         self.searchTerm = searchTerm
 
         super.init(nibName: nil, bundle: nil)
