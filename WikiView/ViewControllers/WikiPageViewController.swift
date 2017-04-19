@@ -12,6 +12,9 @@ public class WikiPageViewController: UIViewController {
     /// The search term to use with the Wikipedia API
     private var searchTerm: String
 
+    /// An instance of the client class that interacts with the API
+    private let wikiClient = WikipediaClient()
+
     /// The title of the Wiki page
     private let titleLabel = UILabel(frame: .zero)
 
@@ -64,7 +67,6 @@ public class WikiPageViewController: UIViewController {
 
     /// Hit the Wikipedia API to get the required information
     private func searchForWikiPage() {
-        let wikiClient = WikipediaClient()
         wikiClient.searchForWikiPage(
             withTitle: searchTerm,
             onSuccess: { [weak self] wikiPage in
