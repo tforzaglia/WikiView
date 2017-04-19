@@ -23,7 +23,8 @@ internal class WikipediaClient {
             case .success(let value):
                 let json = JSON(value)
                 print(json)
-                if let wikiPage = self?.wikiPageFromJson(json: json) {
+                guard let strongSelf = self else { return }
+                if let wikiPage = strongSelf.wikiPageFromJson(json: json) {
                     print("got wiki page from json...calling success block")
                     onSuccess(wikiPage)
                 } else {
