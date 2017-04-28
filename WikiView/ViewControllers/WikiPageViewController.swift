@@ -27,6 +27,9 @@ public class WikiPageViewController: UIViewController {
     /// View separator between the title and image
     private let viewSeparator = UIView(frame: .zero)
 
+    /// Button allowing a user to dismiss the view
+    private let closeButton = UIButton(frame: .zero)
+
     /// The page built from the response of the API call
     private var wikiPage: WikiPage? = nil {
         didSet {
@@ -34,6 +37,7 @@ public class WikiPageViewController: UIViewController {
             setupViewSeparator()
             setupThumbnailImageView()
             setupIntroParagraphTextView()
+            setupCloseButton()
 
             applyConstraints()
         }
@@ -76,6 +80,8 @@ public class WikiPageViewController: UIViewController {
         )
     }
 
+    // MARK: - UI Setup
+
     /// Setup the label containing the article's title
     private func setupTitleLabel() {
         let fontSize: CGFloat = isPhone ? 24 : 30
@@ -117,12 +123,29 @@ public class WikiPageViewController: UIViewController {
         view.addSubview(introParagraphTextView)
     }
 
+    /// Setup the dismiss view button
+    private func setupCloseButton() {
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.backgroundColor = .white
+        closeButton.setTitle("X", for: .normal)
+        closeButton.setTitleColor(.black, for: .normal)
+        closeButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 24)
+        closeButton.addTarget(self, action: #selector(handleCloseButtonTapped(sender:)), for: .touchUpInside)
+
+        view.addSubview(closeButton)
+    }
+
     /// Activate constraints on all the controls that make up the UI
     private func applyConstraints() {
         let width: CGFloat = isPhone ? view.bounds.width - 30 : 400
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
 
         viewSeparator.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2).isActive = true
         viewSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
@@ -138,5 +161,12 @@ public class WikiPageViewController: UIViewController {
         introParagraphTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         introParagraphTextView.widthAnchor.constraint(equalToConstant: width).isActive = true
         introParagraphTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+
+    // MARK: - Button Action Handler
+
+    /// Dismiss the view controller
+    @objc private func handleCloseButtonTapped(sender: UIButton) {
+        dismiss(animated: true)
     }
 }
