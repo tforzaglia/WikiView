@@ -165,6 +165,7 @@ public class WikiPageViewController: UIViewController {
 
     // MARK: - Button Action Handler
 
+    /// Dismiss the view controller
     @objc private func handleCloseButtonTapped(sender: UIButton) {
         dismiss(animated: true)
     }
