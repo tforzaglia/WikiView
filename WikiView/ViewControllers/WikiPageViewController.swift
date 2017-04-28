@@ -78,7 +78,7 @@ public class WikiPageViewController: UIViewController {
 
     /// Setup the label containing the article's title
     private func setupTitleLabel() {
-        let fontSize: CGFloat = isPhone ? 20 : 26
+        let fontSize: CGFloat = isPhone ? 24 : 30
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
@@ -107,7 +107,7 @@ public class WikiPageViewController: UIViewController {
 
     /// Setup the text view containing the article's intro paragraph
     private func setupIntroParagraphTextView() {
-        let fontSize: CGFloat = isPhone ? 12 : 14
+        let fontSize: CGFloat = isPhone ? 14 : 16
         introParagraphTextView.translatesAutoresizingMaskIntoConstraints = false
         introParagraphTextView.isEditable = false
         introParagraphTextView.textAlignment = .left
@@ -120,7 +120,7 @@ public class WikiPageViewController: UIViewController {
     /// Activate constraints on all the controls that make up the UI
     private func applyConstraints() {
         let width: CGFloat = isPhone ? view.bounds.width - 30 : 400
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
@@ -130,7 +130,7 @@ public class WikiPageViewController: UIViewController {
         viewSeparator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         thumbnailImageView.topAnchor.constraint(equalTo: viewSeparator.bottomAnchor, constant: 10).isActive = true
-        thumbnailImageView.widthAnchor.constraint(equalToConstant: 131).isActive = true
+        thumbnailImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         thumbnailImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         thumbnailImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
