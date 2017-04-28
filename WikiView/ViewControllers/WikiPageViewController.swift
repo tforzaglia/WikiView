@@ -126,7 +126,10 @@ public class WikiPageViewController: UIViewController {
     /// Setup the dismiss view button
     private func setupCloseButton() {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.setBackgroundImage(#imageLiteral(resourceName: "closeButton.png"), for: .normal)
+        closeButton.backgroundColor = .white
+        closeButton.setTitle("X", for: .normal)
+        closeButton.tintColor = .black
+        closeButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 24)
         closeButton.addTarget(self, action: #selector(handleCloseButtonTapped(sender:)), for: .touchUpInside)
 
         view.addSubview(closeButton)
