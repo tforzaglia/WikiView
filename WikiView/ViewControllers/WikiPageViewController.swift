@@ -128,7 +128,7 @@ public class WikiPageViewController: UIViewController {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.backgroundColor = .white
         closeButton.setTitle("X", for: .normal)
-        closeButton.tintColor = .black
+        closeButton.setTitleColor(.black, for: .normal)
         closeButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 24)
         closeButton.addTarget(self, action: #selector(handleCloseButtonTapped(sender:)), for: .touchUpInside)
 
@@ -143,7 +143,7 @@ public class WikiPageViewController: UIViewController {
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
 
