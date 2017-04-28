@@ -16,7 +16,6 @@
 		9221F77F1EA309E000077DDD /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9221F77E1EA309E000077DDD /* SwiftyJSON.framework */; };
 		9221F7821EA32B4400077DDD /* WikiPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F7811EA32B4400077DDD /* WikiPageViewController.swift */; };
 		92346AB21EA6F3DD003A23D5 /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92346AB11EA6F3DD003A23D5 /* UrlImageView.swift */; };
-		92DC4F8F1EB2F36400321B32 /* closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DC4F8E1EB2F36400321B32 /* closeButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +41,6 @@
 		9221F77E1EA309E000077DDD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9221F7811EA32B4400077DDD /* WikiPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WikiPageViewController.swift; path = ViewControllers/WikiPageViewController.swift; sourceTree = "<group>"; };
 		92346AB11EA6F3DD003A23D5 /* UrlImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlImageView.swift; path = Controls/UrlImageView.swift; sourceTree = "<group>"; };
-		92DC4F8E1EB2F36400321B32 /* closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = closeButton.png; path = Images/closeButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +90,6 @@
 				92346AB01EA6F3C7003A23D5 /* Controls */,
 				9221F77B1EA2F1D900077DDD /* Models */,
 				9221F7801EA32B2300077DDD /* ViewControllers */,
-				92DC4F8B1EB2F2CB00321B32 /* Images */,
 				9221F75D1EA2B52100077DDD /* WikiView.h */,
 				9221F75E1EA2B52100077DDD /* Info.plist */,
 			);
@@ -147,14 +144,6 @@
 				92346AB11EA6F3DD003A23D5 /* UrlImageView.swift */,
 			);
 			name = Controls;
-			sourceTree = "<group>";
-		};
-		92DC4F8B1EB2F2CB00321B32 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				92DC4F8E1EB2F36400321B32 /* closeButton.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +243,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92DC4F8F1EB2F36400321B32 /* closeButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
