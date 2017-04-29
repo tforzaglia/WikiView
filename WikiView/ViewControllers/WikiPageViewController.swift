@@ -74,8 +74,22 @@ public class WikiPageViewController: UIViewController {
                 DispatchQueue.main.async {
                     strongSelf.wikiPage = wikiPage
                 }
-            }, onError: { error in
-                print(error)
+            },
+            onError: { [weak self] error in
+                guard let strongSelf = self else { return }
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "Error occurred while looking up \(strongSelf.searchTerm)", message: error.localizedDescription, preferredStyle: .alert)
+                    alertController.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: .default,
+                            handler: { [weak self] _ in
+                                self?.dismiss(animated: true)
+                            }
+                        )
+                    )
+                    strongSelf.present(alertController, animated: true)
+                }
             }
         )
     }
