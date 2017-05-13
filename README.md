@@ -1,7 +1,12 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # WikiView
-iOS framework that provides a `UIViewController` subclass for displaying contents of Wikipedia page
+iOS framework that provides a `UIViewController` subclass for displaying contents of Wikipedia page. The framework also provides a way to get just the `WikiPage` object so that you can use it with your own custom view controllers.
+
+Currently, the `WikiPage` object contains properties for 
+1. Title of page
+2. Introductory paragraph of page
+3. Thumbnail image associated with the page
 
 ## Installation
 ### Carthage
@@ -29,8 +34,19 @@ let wikiViewController = WikiPageViewController(withSearchTerm: "iOS")
 present(wikiViewController, animated: true)
 ```
 
-## Result
-The presented `UIViewController` will contain the Wikipedia page's title, thumbnail image, and introductory paragraph
+Or, if you prefer to use the `WikiPage` object as a source for your own `UIViewController`
+```swift
+let wikiPageController = WikiPageController()
+wikiPageController.getWikiPage(
+    withSearchTerm: "iOS",
+    onSuccess: { wikiPage in
+        // set wiki page to a property
+    },
+    onError: { error in
+        // handle error here
+    }
+)
+```
 
 ## To Build
 ### Install Carthage
