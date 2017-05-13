@@ -6,7 +6,7 @@
 //  Copyright © 2017 Thomas Forzaglia. All rights reserved.
 //
 
-internal class WikiPage {
+public class WikiPage {
     /// The title of the Wikipedia page
     let title: String
 
