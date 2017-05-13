@@ -16,7 +16,7 @@ public class WikiPage {
     /// String representing the URL to the page's main thumbnail image
     let imageUrl: String
 
-    init(title: String, extract: String, imageUrl: String) {
+    internal init(title: String, extract: String, imageUrl: String) {
         self.title = title
         self.extract = extract
         self.imageUrl = imageUrl
